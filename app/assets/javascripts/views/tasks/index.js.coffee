@@ -1,5 +1,5 @@
-  class TodoList.Views.TasksIndex extends Backbone.View
-  el:'#app'
+class TodoList.Views.TasksIndex extends Backbone.View
+  el: '#app'
   template: JST['tasks/index']
   events:
     'keypress #add-task' :'createOnEnter'
@@ -8,8 +8,9 @@
     @collection.bind 'add',@addTask, @
   render: ->
     $(@el).html(@template())
+
     @collection.each (task) =>
-      view = new TodoList.Views.TaskItem model: task
+      view = new TodoList.Views.TasksItem model: task
       @$('#tasks').append(view.render().el)
     @
   createOnEnter: (event) ->
